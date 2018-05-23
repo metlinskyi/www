@@ -15,4 +15,4 @@ docker-compose -f docker/docker-compose.yml up -d --build
 ============
 &copy; [The best software engineer in the Universe!](http://metlinskyi.com/)
 
-[favicon-ico]: https://raw.github.com/metlinskyi/www/master/favicon.ico
+[favicon-ico]: https://raw.github.com/metlinskyi/www/master/favicon.png
