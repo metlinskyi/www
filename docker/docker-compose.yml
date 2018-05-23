@@ -1,0 +1,73 @@
+version: "3.5"
+
+services:
+  
+#  ci:
+#    image: jenkins/jenkins:lts
+#    ports:
+#      - "127.0.0.1:8080:8080"
+#      - "127.0.0.1:50000:50000"
+#    networks:
+#      - www-network
+#    volumes: 
+#      - ~/www/jenkins/home:/var/jenkins_home
+#    environment:
+#      JAVA_OPTS: "-Dhudson.footerURL=http://metlinskyi.com"
+
+  mysql:
+    image: mysql:5.7.22
+    ports:
+      - "127.0.0.1:3306:3306"
+    networks:
+      - www-network
+    volumes:
+      - ~/www/mysql/data:/var/lib/mysql
+    secrets:
+      - mysql-root
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql-root
+    restart: always
+
+  php:
+    image: wordpress:fpm-alpine 
+    ports:
+      - "127.0.0.1:9000:9000"
+    networks:
+      - www-network
+    volumes:
+      - ~/www/php/html:/var/www/html
+      - ~/:/www
+    restart: always
+  
+  php-myadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    networks:
+      - www-network
+    depends_on:
+      - mysql   
+    environment:
+      PMA_HOST: mysql
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - www-network
+    volumes:
+      - ~/:/www
+      - ~/www/nginx:/etc/nginx
+    depends_on:
+      - php
+    restart: always
+
+secrets:
+  mysql-root:
+    file: ~/www/mysql/root
+
+networks:
+  www-network:
+    driver: bridge
