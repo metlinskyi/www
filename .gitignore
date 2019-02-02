@@ -1,5 +1,5 @@
 !.gitkeep
 db/*
 src/*
-
+dist/*
 .vscode
