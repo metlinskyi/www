@@ -1,0 +1,67 @@
+version: "3.6"
+
+networks:
+
+    wordpress:
+        driver: bridge
+
+secrets:
+
+    mysql-root:
+        file: ./mysql/.root
+
+services:
+
+    mysql:
+        container_name: wp.mysql
+        image: mysql:5
+        restart: always
+        networks:
+            wordpress:
+                aliases:
+                    - mysql.wordpress.local
+        volumes:
+            - ./db:/var/lib/mysql
+        secrets:
+            - mysql-root
+        environment:
+            MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql-root
+
+    nginx:
+        container_name: wp.nginx
+        image: nginx:alpine
+        restart: always
+        networks:
+            wordpress:
+                aliases:
+                    - nginx.wordpress.local
+        ports:
+            - "80:80"
+            - "443:443"            
+        volumes:
+            - ./docker/nginx:/etc/nginx
+        depends_on:
+            - fpm
+
+    fpm:
+        container_name: wp.fpm
+        image: wordpress:fpm-alpine 
+        restart: always
+        networks:
+            wordpress:
+                aliases:
+                    - fpm.wordpress.local
+        volumes:
+            - ./src:/var/www/html
+      
+    adminer:
+        container_name: wp.adminer
+        image: adminer
+        networks:
+            wordpress:
+                aliases:
+                    - adminer.wordpress.local
+        ports:
+            - "8080:8080"
+        depends_on:
+            - mysql
