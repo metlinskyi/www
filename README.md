@@ -13,6 +13,6 @@ docker-compose -f up -d --build
 
 &nbsp;
 ============
-&copy; [The best software engineer in the Universe!](http://metlinskyi.com/)
+&copy; [The best software engineer in the Universe!](http://www.metlinskyi.com/)
 
 [favicon-ico]: https://raw.github.com/metlinskyi/www/magento2/favicon.png
