@@ -122,8 +122,8 @@ services:
             - VERBOSE=false
 
     cli:
-        container_name: cli
-        image: magento:cli
+        container_name: magento2.cli
+        image: www/magento:cli
         build:
             context: ./docker/cli
             dockerfile: Dockerfile
