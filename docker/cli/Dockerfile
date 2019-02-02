@@ -44,7 +44,6 @@ RUN npm install -g grunt-cli
 
 COPY entrypoint.sh 		/usr/local/bin/entrypoint.sh
 COPY conf/php.ini 		/etc/php7/php.ini
-COPY conf/aliases.sh 	/etc/profile.d/aliases.sh
 
 USER magento
 WORKDIR /var/www/html
