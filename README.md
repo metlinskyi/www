@@ -4,7 +4,7 @@
 My web development environment base on Docker
 
 -  [Megento 2](https://github.com/metlinskyi/www/tree/magento2)
--  [Wordpress](https://github.com/metlinskyi/www/tree/wordpress)
+-  [WordPress](https://github.com/metlinskyi/www/tree/wordpress)
   
 ###### Usage
 
