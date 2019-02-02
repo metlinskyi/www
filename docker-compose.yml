@@ -13,7 +13,7 @@ secrets:
 services:
 
     mysql:
-        container_name: wp.mysql
+        container_name: wordpress.mysql
         image: mysql:5
         restart: always
         networks:
@@ -28,7 +28,7 @@ services:
             MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql-root
 
     nginx:
-        container_name: wp.nginx
+        container_name: wordpress.nginx
         image: nginx:alpine
         restart: always
         networks:
@@ -44,7 +44,7 @@ services:
             - fpm
 
     fpm:
-        container_name: wp.fpm
+        container_name: wordpress.fpm
         image: wordpress:fpm-alpine 
         restart: always
         networks:
@@ -55,7 +55,7 @@ services:
             - ./src:/var/www/html
       
     adminer:
-        container_name: wp.adminer
+        container_name: wordpress.adminer
         image: adminer
         networks:
             wordpress:
