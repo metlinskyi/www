@@ -120,3 +120,16 @@ services:
                     - redis.magento2.local
         environment:
             - VERBOSE=false
+
+    cli:
+        container_name: cli
+        image: magento:cli
+        build:
+            context: ./docker/cli
+            dockerfile: Dockerfile
+        volumes:
+            - ./src:/var/www/html:rw
+        networks:
+            default:
+                aliases:
+                    - php-cli.magento2.local  
