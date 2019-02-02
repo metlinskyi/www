@@ -10,95 +10,95 @@ networks:
 
 services:
 
-    # fpm:
-    #     container_name: magento2.fpm
-    #     image: www/magento2:fpm
-    #     build:
-    #         context: ./docker/fpm
-    #         dockerfile: Dockerfile
-    #     restart: unless-stopped
-    #     volumes:
-    #         - ./src:/var/www/html:rw
-    #     networks:
-    #         magento2:
-    #             aliases:
-    #                 - php-fpm.magento2.local
-    #     environment:
-    #         - VERBOSE=true
-    #     links:
-    #         - mysql
-    #         - redis
+    fpm:
+        container_name: magento2.fpm
+        image: www/magento2:fpm
+        build:
+            context: ./docker/fpm
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        volumes:
+            - ./src:/var/www/html:rw
+        networks:
+            magento2:
+                aliases:
+                    - php-fpm.magento2.local
+        environment:
+            - VERBOSE=true
+        links:
+            - mysql
+            - redis
 
-    # cron:
-    #     container_name: magento2.cron
-    #     image: www/magento2:cron
-    #     build:
-    #         context: ./docker/cron
-    #         dockerfile: Dockerfile
-    #     restart: unless-stopped
-    #     volumes:
-    #         - ./src:/var/www/html:rw
-    #     networks:
-    #         magento2:
-    #             aliases:
-    #                 - php-cron.magento2.local
-    #     environment:
-    #         - VERBOSE=false
-    #     links:
-    #         - mysql
-    #         - redis
+    cron:
+        container_name: magento2.cron
+        image: www/magento2:cron
+        build:
+            context: ./docker/cron
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        volumes:
+            - ./src:/var/www/html:rw
+        networks:
+            magento2:
+                aliases:
+                    - php-cron.magento2.local
+        environment:
+            - VERBOSE=false
+        links:
+            - mysql
+            - redis
 
-    # nginx:
-    #     container_name: magento2.nginx
-    #     image: www/magento2:nginx
-    #     build:
-    #         context: ./docker/nginx
-    #         dockerfile: Dockerfile
-    #     restart: unless-stopped
-    #     volumes:
-    #         - ./src:/var/www/html:rw
-    #     networks:
-    #         magento2:
-    #             aliases:
-    #                 - nginx.magento2.local
-    #     environment:
-    #         - VERBOSE=true
-    #     links:
-    #         - fpm
-    #     ports:
-    #         - "443:443"
+    nginx:
+        container_name: magento2.nginx
+        image: www/magento2:nginx
+        build:
+            context: ./docker/nginx
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        volumes:
+            - ./src:/var/www/html:rw
+        networks:
+            magento2:
+                aliases:
+                    - nginx.magento2.local
+        environment:
+            - VERBOSE=true
+        links:
+            - fpm
+        ports:
+            - "443:443"
 
-    # varnish:
-    #     container_name: magento2.varnish
-    #     image: www/magento2:varnish
-    #     build:
-    #         context: ./docker/varnish
-    #         dockerfile: Dockerfile
-    #     restart: unless-stopped
-    #     environment:
-    #         - VERBOSE=false
-    #     networks:
-    #         magento2:
-    #             aliases:
-    #                 - varnish.magento2.local
-    #     links:
-    #         - nginx
-    #     ports:
-    #         - "80:80"   
+    varnish:
+        container_name: magento2.varnish
+        image: www/magento2:varnish
+        build:
+            context: ./docker/varnish
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        environment:
+            - VERBOSE=false
+        networks:
+            magento2:
+                aliases:
+                    - varnish.magento2.local
+        links:
+            - nginx
+        ports:
+            - "80:80"   
             
-    # redis:
-    #     container_name: magento2.redis
-    #     image: www/magento2:redis
-    #     build:
-    #         context: ./docker/redis
-    #         dockerfile: Dockerfile
-    #     restart: unless-stopped
-    #     networks:
-    #         magento2:
-    #             aliases:
-    #                 - redis.magento2.local
-    #     environment:
-    #         - VERBOSE=false
+    redis:
+        container_name: magento2.redis
+        image: www/magento2:redis
+        build:
+            context: ./docker/redis
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        networks:
+            magento2:
+                aliases:
+                    - redis.magento2.local
+        environment:
+            - VERBOSE=false
 
     mysql:
         container_name: magento2.mysql
