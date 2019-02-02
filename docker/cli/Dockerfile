@@ -3,6 +3,7 @@ LABEL maintainer Roman Metlinskyi <gmail@metlinskyi.com>
 
 RUN apk --update --no-cache add \
 	shadow \
+	sudo \
 	curl \
 	vim \
 	git \
@@ -41,7 +42,7 @@ RUN addgroup -g 1000 magento && \
 RUN curl --silent --show-error https://getcomposer.org/installer | php && \
 	mv composer.phar /usr/bin/composer
 
-RUN npm install -g grunt-cli
+RUN sudo npm install -g grunt-cli
 
 COPY entrypoint.sh 			/usr/local/bin/entrypoint.sh
 COPY conf/php.ini 			/etc/php7/php.ini
