@@ -1,11 +1,15 @@
 version: "2"
+
 networks:
+
     default:
         driver: bridge
         ipam:
             config:
                 - subnet: "192.168.7.0/28"
+
 services:
+
     mysql:
         container_name: mysql
         image: magento:mysql
@@ -26,6 +30,7 @@ services:
             - MYSQL_USER_NAME=magento
             - MYSQL_USER_PASSWORD=magento
             - MYSQL_DATABASE=magento
+
     redis:
         container_name: redis
         image: magento:redis
@@ -39,6 +44,7 @@ services:
                     - redis.docker.internal
         environment:
             - VERBOSE=false   
+
     fpm:
         container_name: fpm
         image: magento:fpm
@@ -57,6 +63,7 @@ services:
         links:
             - mysql
             - redis
+
     cron:
         container_name: cron
         image: magento:cron
@@ -75,6 +82,7 @@ services:
         links:
             - mysql
             - redis
+
     nginx:
         container_name: nginx
         image: magento:nginx
@@ -94,6 +102,7 @@ services:
             - fpm
         ports:
             - "80:8080"
+            
     cli:
         container_name: cli
         image: magento:cli
