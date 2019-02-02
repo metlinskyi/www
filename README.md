@@ -8,13 +8,6 @@ My magento2 development environment base on Docker
 ```
 cd <app dir>
 git clone --single-branch --branch magento2 https://github.com/metlinskyi/www.git
-```
-
-```
-scp -i <ssh key> magento2.tar.bz2 <user>@<ip>:<app dir>/www/dist/magento2.tar.bz2
-```
-
-```
 cd www
 docker-compose -f up -d --build
 ```
