@@ -6,9 +6,10 @@ alias magento-cli='php ./bin/magento'
 chown -R magento:magento /var/www/html
 
 if [ `ls -A "/var/www/html/bin" | wc -m` == "0" ]; then
-    composer create-project --repository=https://repo.magento.com/ magento/project-community-edition
-    chown -R :magento . 
-    chmod u+x bin/magento
+    
+    tar xvC . -f /dist/magento2.tar.bz2
+    
+    find . -type d -exec chmod 700 {} \; && find . -type f -exec chmod 600 {} \;
 
 	MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-mysql}
 	MYSQL_DATABASE=${MYSQL_DATABASE:-""}
@@ -37,14 +38,21 @@ if [ `ls -A "/var/www/html/bin" | wc -m` == "0" ]; then
         --admin-password=$ADMIN_PASSWORD \
         --language=$LANGUAGE \
         --currency=$CURRENCY \
-        --timezone=America/Chicago \
+        --timezone=UTC \
         --use-rewrites=1
+
+    mv package.json.sample package.json
+    mv Gruntfile.js.sample Gruntfile.js
+    mv grunt-config.json.sample grunt-config.json 
+
+    npm install
+    npm update 
+    npm audit fix
+
+else
+
+    grunt exec:default
+    grunt less:default
+    grunt watch:default
+
 fi
-
-npm install
-npm update 
-npm audit fix
-
-grunt exec:default
-grunt less:default
-grunt watch:default

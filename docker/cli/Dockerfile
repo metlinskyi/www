@@ -6,6 +6,7 @@ RUN apk --update --no-cache add \
 	curl \
 	vim \
 	git \
+	bzip2 \
 	php7 \
 	php7-bcmath \
 	php7-cli \
@@ -42,8 +43,8 @@ RUN curl --silent --show-error https://getcomposer.org/installer | php && \
 
 RUN npm install -g grunt-cli
 
-COPY entrypoint.sh 		/usr/local/bin/entrypoint.sh
-COPY conf/php.ini 		/etc/php7/php.ini
+COPY entrypoint.sh 			/usr/local/bin/entrypoint.sh
+COPY conf/php.ini 			/etc/php7/php.ini
 
 USER magento
 WORKDIR /var/www/html
