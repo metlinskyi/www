@@ -2,7 +2,7 @@ version: "2"
 
 networks:
 
-    default:
+    magento2:
         driver: bridge
         ipam:
             config:
@@ -11,8 +11,8 @@ networks:
 services:
 
     fpm:
-        container_name: fpm
-        image: magento:fpm
+        container_name: magento2.fpm
+        image: www/magento2:fpm
         build:
             context: ./docker/fpm
             dockerfile: Dockerfile
@@ -20,9 +20,9 @@ services:
         volumes:
             - ./src:/var/www/html:rw
         networks:
-            default:
+            magento2:
                 aliases:
-                    - php-fpm.docker.internal
+                    - php-fpm.magento2.local
         environment:
             - VERBOSE=true
         links:
@@ -30,8 +30,8 @@ services:
             - redis
 
     cron:
-        container_name: cron
-        image: magento:cron
+        container_name: magento2.cron
+        image: www/magento2:cron
         build:
             context: ./docker/cron
             dockerfile: Dockerfile
@@ -39,9 +39,9 @@ services:
         volumes:
             - ./src:/var/www/html:rw
         networks:
-            default:
+            magento2:
                 aliases:
-                    - php-cron.docker.internal
+                    - php-cron.magento2.local
         environment:
             - VERBOSE=false
         links:
@@ -49,8 +49,8 @@ services:
             - redis
 
     nginx:
-        container_name: nginx
-        image: magento:nginx
+        container_name: magento2.nginx
+        image: www/magento2:nginx
         build:
             context: ./docker/nginx
             dockerfile: Dockerfile
@@ -58,9 +58,9 @@ services:
         volumes:
             - ./src:/var/www/html:rw
         networks:
-            default:
+            magento2:
                 aliases:
-                    - nginx.docker.internal
+                    - nginx.magento2.local
         environment:
             - VERBOSE=true
         links:
@@ -69,8 +69,8 @@ services:
             - "443:443"
 
     mysql:
-        container_name: mysql
-        image: magento:mysql
+        container_name: magento2.mysql
+        image: www/magento2:mysql
         build:
             context: ./docker/mysql
             dockerfile: Dockerfile
@@ -78,20 +78,20 @@ services:
         volumes:
             - ./db:/var/lib/mysql
         networks:
-            default:
+            magento2:
                 aliases:
                     - localhost
-                    - mysql.docker.internal
+                    - mysql.magento2.local
         environment:
             - VERBOSE=false
-            - MYSQL_ROOT_PASSWORD=magento
-            - MYSQL_USER_NAME=magento
-            - MYSQL_USER_PASSWORD=magento
-            - MYSQL_DATABASE=magento
+            - MYSQL_ROOT_PASSWORD=magento2
+            - MYSQL_USER_NAME=magento2
+            - MYSQL_USER_PASSWORD=magento2
+            - MYSQL_DATABASE=magento2
 
     varnish:
-        container_name: varnish
-        image: magento:varnish
+        container_name: magento2.varnish
+        image: www/magento2:varnish
         build:
             context: ./docker/varnish
             dockerfile: Dockerfile
@@ -99,24 +99,24 @@ services:
         environment:
             - VERBOSE=false
         networks:
-            default:
+            magento2:
                 aliases:
-                    - varnish.docker.internal
+                    - varnish.magento2.local
         links:
             - nginx
         ports:
             - "80:80"   
             
     redis:
-        container_name: redis
-        image: magento:redis
+        container_name: magento2.redis
+        image: www/magento2:redis
         build:
             context: ./docker/redis
             dockerfile: Dockerfile
         restart: unless-stopped
         networks:
-            default:
+            magento2:
                 aliases:
-                    - redis.docker.internal
+                    - redis.magento2.local
         environment:
             - VERBOSE=false

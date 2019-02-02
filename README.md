@@ -1,4 +1,4 @@
-![favicon-ico] www > magento2
+![favicon-ico] www / magento2
 =======
 
 My magento2 development environment base on Docker
