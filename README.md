@@ -1,13 +1,13 @@
-![favicon-ico] www
+![favicon-ico] www > magento2
 =======
 
-My web development environment base on Docker
+My magento2 development environment base on Docker
 
 ###### Usage
 
 ```
 
-docker-compose -f docker/docker-compose.yml up -d --build
+docker-compose -f up -d --build
 
 ```
 
@@ -15,4 +15,4 @@ docker-compose -f docker/docker-compose.yml up -d --build
 ============
 &copy; [The best software engineer in the Universe!](http://metlinskyi.com/)
 
-[favicon-ico]: https://raw.github.com/metlinskyi/www/master/favicon.png
+[favicon-ico]: https://raw.github.com/metlinskyi/www/magento2/favicon.ico

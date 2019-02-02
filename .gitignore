@@ -1,13 +1,2 @@
-.htpasswd
-
-jenkins/home/*
-
-mysql/data/*
-mysql/dumps/*
-mysql/root
-
-nginx/available/www*
-
-php/html/*
-
-!.gitkeep
+db/*
+src/*
