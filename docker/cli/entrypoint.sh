@@ -5,11 +5,16 @@ alias magento-cli='php ./bin/magento'
 
 chown -R magento:magento /var/www/html
 
-if [ `ls -A "/var/www/html/bin" | wc -m` == "0" ]; then
-    
+# unzip distributive to source directory
+if [ ! -f /var/www/html/index.php ]; then
+
     tar xvC . -f /dist/magento2.tar.bz2
-    
     find . -type d -exec chmod 700 {} \; && find . -type f -exec chmod 600 {} \;
+
+fi
+
+# install the Magento software
+if [ ! -f /var/www/html/.installed ]; then
 
 	MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-mysql}
 	MYSQL_DATABASE=${MYSQL_DATABASE:-""}
@@ -40,16 +45,19 @@ if [ `ls -A "/var/www/html/bin" | wc -m` == "0" ]; then
         --currency=$CURRENCY \
         --timezone=UTC \
         --use-rewrites=1
+    
+    touch /var/www/html/.installed
 
-    mv package.json.sample package.json
-    mv Gruntfile.js.sample Gruntfile.js
-    mv grunt-config.json.sample grunt-config.json 
+fi
 
-    npm install
-    npm update 
-    npm audit fix
+# run Grunt tasks
+if [ -f /var/www/html/Gruntfile.js ]; then
 
-else
+    if [ ! -d /var/www/html/node_modules ]; then
+        npm install -g grunt-cli
+        npm install
+        npm update 
+    fi
 
     grunt exec:default
     grunt less:default
