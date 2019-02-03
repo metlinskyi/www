@@ -9,7 +9,7 @@ My magento2 development environment base on Docker
 cd <app dir>
 git clone --single-branch --branch magento2 https://github.com/metlinskyi/www.git
 cd www
-docker-compose -f up -d --build
+docker-compose up -d --build
 ```
 
 &nbsp;
