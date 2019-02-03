@@ -130,9 +130,9 @@ services:
             magento2:
                 aliases:
                     - php-cli.magento2.local  
-        env_file:
-            - variables.env
         depends_on:
             - mysql
         links:
             - mysql
+        env_file:
+            - variables.env
