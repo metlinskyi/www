@@ -42,7 +42,7 @@ RUN addgroup -g 1000 magento && \
 RUN curl --silent --show-error https://getcomposer.org/installer | php && \
 	mv composer.phar /usr/bin/composer
 
-RUN npm config set unsafe-perm true
+#RUN npm config set unsafe-perm true
 RUN npm install -g grunt-cli
 
 COPY entrypoint.sh 			/usr/local/bin/entrypoint.sh
