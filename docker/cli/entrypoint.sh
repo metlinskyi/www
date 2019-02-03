@@ -7,7 +7,7 @@ chown -R magento:magento /var/www/html
 
 if [ ! -f /var/www/html/index.php ]; then
     echo "unzip distributive to source directory"
-    tar xvC . -f /dist/magento2.tar.bz2 > /dev/nul
+    tar xvC . -f /dist/magento2.tar.bz2 > /dev/null
     find . -type d -exec chmod 700 {} \; && find . -type f -exec chmod 600 {} \;
 fi
 
