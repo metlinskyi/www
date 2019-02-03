@@ -132,7 +132,5 @@ services:
                     - php-cli.magento2.local  
         depends_on:
             - mysql
-        links:
-            - mysql
         env_file:
             - variables.env
