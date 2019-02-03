@@ -5,17 +5,14 @@ alias magento-cli='php ./bin/magento'
 
 chown -R magento:magento /var/www/html
 
-# unzip distributive to source directory
 if [ ! -f /var/www/html/index.php ]; then
-
-    tar xvC . -f /dist/magento2.tar.bz2
+    echo "unzip distributive to source directory"
+    tar xvC . -f /dist/magento2.tar.bz2 > /dev/nul
     find . -type d -exec chmod 700 {} \; && find . -type f -exec chmod 600 {} \;
-
 fi
 
-# install the Magento software
 if [ ! -f /var/www/html/.installed ]; then
-
+    echo "install the Magento software"
 	MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-mysql}
 	MYSQL_DATABASE=${MYSQL_DATABASE:-""}
 	MYSQL_USER_NAME=${MYSQL_USER_NAME:-""}
@@ -28,9 +25,10 @@ if [ ! -f /var/www/html/.installed ]; then
     LANGUAGE=${LANGUAGE:-""}
     CURRENCY=${CURRENCY:-""}
     BACKEND_FRONTNAME=${BACKEND_FRONTNAME:-""}
+    BASE_URL=${BASE_URL:-""}
 
     magento-cli setup:install \
-        --base-url=http://localhost/ \
+        --base-url=$BASE_URL \
         --db-host=mysql.magento2.local \
         --db-name=$MYSQL_DATABASE \
         --db-user=$MYSQL_USER_NAME \
@@ -47,20 +45,17 @@ if [ ! -f /var/www/html/.installed ]; then
         --use-rewrites=1
     
     touch /var/www/html/.installed
-
 fi
 
-# run Grunt tasks
 if [ -f /var/www/html/Gruntfile.js ]; then
-
     if [ ! -d /var/www/html/node_modules ]; then
+        echo "install grunt-cli"
         npm install -g grunt-cli
         npm install
         npm update 
     fi
-
+    echo "run Grunt tasks"
     grunt exec:default
     grunt less:default
     grunt watch:default
-
 fi
