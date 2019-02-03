@@ -59,3 +59,5 @@ if [ -f /var/www/html/Gruntfile.js ]; then
     grunt less:default
     grunt watch:default
 fi
+
+exec "$@"
