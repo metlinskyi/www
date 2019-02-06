@@ -1,4 +1,4 @@
 .vscode/*
 app/*
-src/*
+dist/*
 !.gitkeep
