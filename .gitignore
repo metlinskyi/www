@@ -1,3 +1,4 @@
-db/*
-!.gitkeep
 .vscode/*
+app/*
+src/*
+!.gitkeep

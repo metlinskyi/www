@@ -1,0 +1,13 @@
+version: "3.6"
+services:
+    app:
+        container_name: app.angular
+        image: www/angular
+        build: 
+            context: ./docker
+        ports:
+            - 1481:81 # http://localhost:1481/ 
+        volumes:
+            - ./app:/usr/share/app
+        env_file:
+            - variables.env
