@@ -1,7 +1,7 @@
 ![favicon-ico] www / angular
 =======
 
-My web development environment base on Docker
+My angular development environment base on Docker
 
 ###### Usage
 
@@ -18,4 +18,4 @@ docker-compose up -d --build
 ============
 &copy; [The best software engineer in the Universe!](http://www.metlinskyi.com/)
 
-[favicon-ico]: https://raw.github.com/metlinskyi/www/master/favicon.png
+[favicon-ico]: https://raw.github.com/metlinskyi/www/angular/favicon.png
