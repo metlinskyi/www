@@ -12,6 +12,9 @@ git clone --single-branch --branch <branch name> https://github.com/metlinskyi/w
 cd www
 docker-compose up -d --build
 
+
+docker exec -it <branch name> /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh"
+
 ```
 
 &nbsp;
