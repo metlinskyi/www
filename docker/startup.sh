@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 if [ ! -d /usr/share/app/src ]; then
-    ng new $projectName --style=$style --prefix=$prefix --routing=true --skipInstall=true --verbose=true --directory . 
+    ng new $projectName --style=$style --prefix=$prefix --routing=true --skipInstall=true --verbose=true --force=true --directory . 
     chmod -R 777 .
 fi
 
