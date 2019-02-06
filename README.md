@@ -1,10 +1,8 @@
-![favicon-ico] www
+![favicon-ico] www / angular
 =======
 
 My web development environment base on Docker
 
--  [Megento 2](https://github.com/metlinskyi/www/tree/magento2)
--  [WordPress](https://github.com/metlinskyi/www/tree/wordpress)
   
 ###### Usage
 
@@ -13,7 +11,7 @@ My web development environment base on Docker
 cd <app dir>
 git clone --single-branch --branch <branch name> https://github.com/metlinskyi/www.git
 cd www
-docker-compose -f up -d --build
+docker-compose up -d --build
 
 ```
 
