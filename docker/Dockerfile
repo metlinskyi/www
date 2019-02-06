@@ -15,6 +15,9 @@ ARG name
 RUN git config --global user.email "$email" 
 RUN	git config --global user.name "$name"
 
+RUN addgroup -g 1000 developer && \
+	adduser -D -S -G developer -u 1000 -s /bin/sh developer
+
 RUN npm install -g sass
 RUN npm install -g less
 RUN npm install -g typescript 
@@ -28,6 +31,6 @@ RUN npm install -g @angular/cli
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY startup.sh /usr/local/bin/startup.sh
 
+USER developer
 WORKDIR /usr/share/app
-
 CMD [ "sh", "/usr/local/bin/startup.sh" ]
