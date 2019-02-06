@@ -9,7 +9,8 @@ services:
                 - email=gmail@metlinskyi.com
                 - name=Roman Metlinskyi
         ports:
-            - 1481:81 # http://localhost:1481/ 
+            - 80:80         # prod  http://localhost/  
+            - 8080:8080     # dev   http://localhost:8080/ 
         volumes:
             - .:/usr/share/app
         env_file:
