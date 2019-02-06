@@ -18,4 +18,4 @@ docker-compose up -d --build
 ============
 &copy; [The best software engineer in the Universe!](http://www.metlinskyi.com/)
 
-[favicon-ico]: https://raw.github.com/metlinskyi/www/angular/favicon.png
+[favicon-ico]: https://raw.github.com/metlinskyi/www/angular/docker/favicon.png
