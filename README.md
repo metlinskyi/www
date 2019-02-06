@@ -7,7 +7,7 @@ My angular development environment base on Docker
 
 ```
 
-git clone --single-branch --branch <branch name> https://github.com/metlinskyi/www.git
+git clone --single-branch --branch angular-app https://github.com/metlinskyi/www.git
 cd www
 docker-compose up -d --build
 
