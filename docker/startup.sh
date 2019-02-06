@@ -2,12 +2,12 @@
 
 if [ ! -d /usr/share/app/src ]; then
     ng new $projectName --directory .
-    chmod -R 777 src
+    chmod -R 777 .
 fi
 
-if [ ! -d /usr/share/app/src/node_module ]; then
+if [ ! -d /usr/share/app/node_modules ]; then
     npm install --save @angular/material @angular/cdk @angular/animations
-    chmod -R 777 src/node_module
+    chmod -R 777 node_modules
 fi
 
 ng serve --port 8081 >/dev/null &
