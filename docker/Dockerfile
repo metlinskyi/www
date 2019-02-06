@@ -6,7 +6,8 @@ RUN apk --update --no-cache add \
 	sudo \
 	shadow \
 	nodejs \ 
-	nodejs-npm
+	nodejs-npm \
+	git
 
 ARG email
 ARG name
