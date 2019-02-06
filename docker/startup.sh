@@ -7,6 +7,7 @@ if [ ! -d /usr/share/app/src ]; then
 fi
 
 if [ ! -d /usr/share/app/node_modules ]; then
+    npm install --save @angular/material @angular/cdk @angular/animations
     npm install && npm update
     chmod -R 777 node_modules
 fi

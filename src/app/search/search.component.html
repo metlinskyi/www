@@ -1,3 +1,26 @@
-<p>
-  search works!
-</p>
+<div class="custom-wrapper-example" matAutocompleteOrigin #origin="matAutocompleteOrigin">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Search..."
+      [formControl]="searchControl"
+      [matAutocomplete]="auto"
+      [matAutocompleteConnectedTo]="origin">
+  </mat-form-field>
+</div>
+
+<mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let x of filteredStates | async" [value]="x.name">
+        <img class="example-option-img" aria-hidden [src]="x.flag" height="25">
+        <span>{{x.name}}</span> |
+        <small>Population: {{x.population}}</small>
+      </mat-option>
+</mat-autocomplete>
+
+<mat-list>
+    <mat-list-item *ngFor="let x of searchResult">
+        <img class="example-option-img" aria-hidden [src]="x.flag" height="25">
+        <span>{{x.name}}</span> |
+        <small>Population: {{x.population}}</small>
+    </mat-list-item>
+</mat-list>
