@@ -123,6 +123,7 @@ services:
         build:
             context: ./docker/cli
             dockerfile: Dockerfile
+        command: tail -f /dev/null
         volumes:
             - ./src:/var/www/html:rw
             - ./dist:/dist:rw

@@ -3,7 +3,6 @@ LABEL maintainer Roman Metlinskyi <gmail@metlinskyi.com>
 
 RUN apk --update --no-cache add \
 	shadow \
-	sudo \
 	curl \
 	vim \
 	git \
