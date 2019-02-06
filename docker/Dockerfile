@@ -8,6 +8,12 @@ RUN apk --update --no-cache add \
 	nodejs \ 
 	nodejs-npm
 
+ARG email
+ARG name
+
+RUN git config --global user.email "$email" 
+RUN	git config --global user.name "$name"
+
 RUN npm install -g sass
 RUN npm install -g less
 RUN npm install -g typescript 

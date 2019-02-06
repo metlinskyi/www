@@ -5,6 +5,9 @@ services:
         image: www/angular
         build: 
             context: ./docker
+            args:
+                - email=gmail@metlinskyi.com
+                - name=Roman Metlinskyi
         ports:
             - 1481:81 # http://localhost:1481/ 
         volumes:
