@@ -13,4 +13,4 @@ services:
         volumes:
             - .:/usr/share/app
         env_file:
-            - docker-compose.env
+            - ./docker/variables.env
