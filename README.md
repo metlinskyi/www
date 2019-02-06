@@ -1,12 +1,8 @@
-![favicon-ico] www
+![favicon-ico] www / angular
 =======
 
 My web development environment base on Docker
 
--  [Angular 7](https://github.com/metlinskyi/www/tree/angular)
--  [Megento 2](https://github.com/metlinskyi/www/tree/magento2)
--  [WordPress](https://github.com/metlinskyi/www/tree/wordpress)
-  
 ###### Usage
 
 ```
