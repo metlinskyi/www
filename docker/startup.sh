@@ -10,5 +10,11 @@ if [ ! -d /usr/share/app/node_modules ]; then
     chmod -R 777 node_modules
 fi
 
+if [ -d /usr/share/app/node_modules ]; then
+    npm install 
+    npm update
+    chmod -R 777 node_modules
+fi
+
 ng serve --port 8081 >/dev/null &
 nginx -g 'daemon off;'

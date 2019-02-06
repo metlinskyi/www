@@ -12,5 +12,6 @@ services:
             - 1481:81 # http://localhost:1481/ 
         volumes:
             - ./app:/usr/share/app
+            - ./dist:/usr/share/dist           
         env_file:
             - variables.env
