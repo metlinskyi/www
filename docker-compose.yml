@@ -11,7 +11,6 @@ services:
         ports:
             - 1481:81 # http://localhost:1481/ 
         volumes:
-            - ./app:/usr/share/app
-            - ./dist:/usr/share/dist           
+            - .:/usr/share/app
         env_file:
-            - variables.env
+            - docker-compose.env.env
