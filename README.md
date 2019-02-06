@@ -15,7 +15,6 @@ docker-compose up -d --build
 
 ```
 docker exec -it angular /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh"
-
 ```
 
 ## Development server
