@@ -12,6 +12,6 @@ services:
             - 4200:4200     # app    http://localhost:4200/ 
             - 9876:9876     # karma  http://localhost:9876/  
         volumes:
-            - .:/usr/share/app
+            - ./:/usr/share/app
         env_file:
             - ./docker/variables.env
