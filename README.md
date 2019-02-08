@@ -19,7 +19,7 @@ docker exec -it angular /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh"
 
 ## Development server
 
-Navigate to `http://localhost:8080/`. The app will automatically reload if you change any of the source files.
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
