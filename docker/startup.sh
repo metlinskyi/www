@@ -9,5 +9,5 @@ if [ ! -d /usr/share/app/node_modules ]; then
     chmod -R 777 node_modules
 fi
 ng build && chmod -R 777 dist
-ng serve >/dev/null &
+ng serve > /dev/null &
 nginx -g 'daemon off;'
