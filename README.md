@@ -6,6 +6,7 @@ My angular development environment base on Docker
 ###### Install
 
 ```
+git config --global core.autocrlf false 
 git clone --single-branch --branch angular-app https://github.com/metlinskyi/www.git
 cd www
 docker-compose up -d --build

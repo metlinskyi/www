@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:10-alpine
 
 LABEL maintainer Roman Metlinskyi <gmail@metlinskyi.com>
 
@@ -11,6 +11,7 @@ RUN apk --update --no-cache add \
 ARG email
 ARG name
 
+RUN git config --global core.autocrlf false
 RUN	git config --global user.name "$name"
 RUN git config --global user.email "$email"
 
