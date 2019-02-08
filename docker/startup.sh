@@ -5,9 +5,7 @@ if [ ! -d /usr/share/app/src ]; then
     chmod -R 777 .
 fi
 if [ ! -d /usr/share/app/node_modules ]; then
-    npm install --save @angular/material @angular/cdk @angular/animations
     npm install
-    npm update
     chmod -R 777 node_modules
 fi
 ng build && chmod -R 777 dist
