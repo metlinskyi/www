@@ -1,17 +1,21 @@
 ![favicon-ico] www / wordpress
 =======
 
-My wordpress development environment base on Docker
+My [WordPress](https://codex.wordpress.org/) application development environment based on Docker. 
+
+  
+###### Install
+
+```
+git clone --single-branch --branch wordpress https://github.com/metlinskyi/www.git
+cd www
+docker-compose up -d --build
+```
 
 ###### Usage
 
 ```
-
-cd <app dir>
-git clone --single-branch --branch wordpress https://github.com/metlinskyi/www.git
-cd www
-docker-compose -f up -d --build
-
+docker exec -it wordpress.<service> /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh"
 ```
 
 &nbsp;
