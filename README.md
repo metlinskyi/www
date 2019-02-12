@@ -1,21 +1,18 @@
 ![favicon-ico] www
 =======
 
-My web development environment base on Docker
+My web application development environment based on Docker. 
 
 -  [Angular 7](https://github.com/metlinskyi/www/tree/angular)
 -  [Megento 2](https://github.com/metlinskyi/www/tree/magento2)
 -  [WordPress](https://github.com/metlinskyi/www/tree/wordpress)
   
-###### Usage
+###### Install
 
 ```
-
-cd <app dir>
 git clone --single-branch --branch <branch name> https://github.com/metlinskyi/www.git
 cd www
 docker-compose up -d --build
-
 ```
 
 &nbsp;
