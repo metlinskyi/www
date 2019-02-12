@@ -1,15 +1,20 @@
 ![favicon-ico] www / magento2
 =======
 
-My magento2 development environment base on Docker
+My [Magento2](https://devdocs.magento.com) application development environment based on Docker.
+
+###### Install
+
+```
+git clone --single-branch --branch magento2 https://github.com/metlinskyi/www.git
+cd www
+docker-compose up -d --build
+```
 
 ###### Usage
 
 ```
-cd <app dir>
-git clone --single-branch --branch magento2 https://github.com/metlinskyi/www.git
-cd www
-docker-compose up -d --build
+docker exec -it magento2.cli /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh"
 ```
 
 &nbsp;
