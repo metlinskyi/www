@@ -15,6 +15,12 @@ cd www
 docker-compose up -d --build
 ```
 
+###### Usage
+
+```
+docker exec -it <container_name> /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh"
+```
+
 &nbsp;
 ============
 &copy; [The best software engineer in the Universe!](http://www.metlinskyi.com/)
