@@ -1,7 +1,7 @@
 ![favicon-ico] www / angular
 =======
 
-My angular development environment base on Docker
+My [Angular](https://angular.io/)  + [Material Design](https://material.angular.io/) application development environment based on Docker.
 
 ###### Install
 
