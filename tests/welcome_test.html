@@ -1,0 +1,19 @@
+<body></body>
+<script>
+    os = {cli:{}};
+    os.execute = function(cmd,callback){
+        if(callback) callback();
+    };
+    os.cli = {
+        write: function(text){
+            let pre = document.createElement('pre');
+            pre.textContent = text;
+            document.body.appendChild(pre);
+        }
+    };
+</script>
+<script src="../src/public/apps/welcome.js"></script>
+<script>
+    welcome();
+    console.log(document.getElementsByTagName('pre').length == 1);
+</script>

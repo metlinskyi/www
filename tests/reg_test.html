@@ -1,0 +1,26 @@
+<body></body>
+<script>
+    os = {cli:{}};
+    os.execute = function(cmd,callback){
+        if(callback) callback();
+    };
+    os.cli = {
+        write: function(text, callback){
+            if(callback) callback();
+        },
+        read: function(type, event){
+            return new Promise((resolve) => {
+                // Simulate user input for testing purposes
+                if(type === 'text'){
+                    resolve('testuser');
+                } else if(type === 'password'){
+                    resolve('testpass');
+                }
+            });
+        }
+    };
+</script>
+<script src="../src/public/apps/reg.js"></script>
+<script async>
+    reg();
+</script>
