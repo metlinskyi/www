@@ -1,0 +1,83 @@
+* {
+    font-family: "Workbench", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "BLED" 0,
+        "SCAN" 0;
+    font-size: 1em;
+    color: #12c712;
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.4em;
+    text-indent: 0;
+}
+
+html{
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    background-color: black;
+}
+
+html::after {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1; 
+    background: radial-gradient(
+        circle,
+        rgba(33, 33, 33, 1) 0%,
+        rgba(15, 15, 15, 1) 99%,
+        rgba(0, 0, 0, 1) 100%);
+    content: "";
+}
+
+body {
+    padding: 1em;
+}
+
+pre {
+    white-space: pre-wrap;
+    letter-spacing: 0;
+}
+
+#input input {
+    min-height: 1em;
+    width: 60%;
+}
+
+#input input:focus {
+    border: none;
+    outline: none;
+}
+
+#input, .output, pre{
+    width: 100%;
+    display: block;
+    min-height: 1em;
+    margin-top: 0.4em;
+}
+
+#input::before, 
+.output::before{
+    height: 1em;
+    display: inline-block;
+    color: #0e6d0e;
+    margin-right: 0.4em;
+    content: ":>";
+}
+
+.execute::before {
+    display: none !important;
+}
