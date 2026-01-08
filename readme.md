@@ -27,3 +27,9 @@ docker run -d \
     --volume=www:/app:rw \
     metlinskyi/com:www
 ```
+
+
+
+&nbsp;
+============
+&copy; [The Best Software Engineer in The Universe!](https://www.linkedin.com/in/metlinskyi/)
